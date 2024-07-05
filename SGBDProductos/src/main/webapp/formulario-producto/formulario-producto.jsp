@@ -5,6 +5,7 @@
 --%>
  
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import = "java.util.ArrayList" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +17,7 @@
 <body>
     <nav class="navbar navbar-dark bg-dark fixed-top position-relative">
         <div class="container-fluid">
-            <a class="navbar-brand" href="./index.jsp">Sistemas de Gestión de Productos</a>
+            <a class="navbar-brand" href="../index.jsp">Sistemas de Gestión de Productos</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -31,7 +32,7 @@
                             <a class="nav-link " aria-current="page" href="../index.jsp">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="./formulario-productos.jsp">Formulario</a>
+                            <a class="nav-link active" href="./formulario-producto.jsp">Formulario</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../lista-productos/lista-productos.jsp">Lista de Productos</a>
@@ -41,23 +42,37 @@
             </div>
         </div>
     </nav>
-    <div class="container w-100">
-    <form class=" mt-3">
+    <center><div class="conrainer text-center">
+        <% ArrayList<String> datosProducto = (ArrayList)request.getAttribute("datosProducto"); %>
+        <%String mensaje = (String)request.getAttribute("mensaje"); %>
+        
+        <% if(datosProducto != null && !datosProducto.isEmpty()){ %>
+            <% for(String producto:datosProducto) {%>
+            <ul>
+                <li><%=producto%></li>
+            </ul>
+            <%}%>
+        <%} %>
+        <h1 class="p-3 mb-2 bg-danger-subtle text-danger-emphasis"><%=mensaje%></h1>
+      
+    </div></center>
+    <div action="container mt-5">
+    <form action="/SGBDProductos/producto-servlet" method="post" enctype="multipar/form-data">
         <div class="form-floating mb-3">
             <input type="text" class="form-control" id="nombreproducto" name="nombreProducto" placeholder="">
             <label for="nombreproducto">Nombre De Producto</label>
         </div>
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="marcaproducto" name="nombreProducto" placeholder="">
-            <label for="marcaproducto">Nombre De Producto</label>
+            <input type="text" class="form-control" id="marcaproducto" name="marcaProducto" placeholder="">
+            <label for="marcaproducto">marca Del Producto</label>
         </div>
         <div class="form-floating mb-3">
-            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" name="descripcionProducto" style="height: 100px"></textarea>
             <label for="floatingTextarea2">Comments</label>
         </div>
         <div class="input-group mb-3">
             <span class="input-group-text">Q.</span>
-            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" name="precioProducto">
         </div>
         <div>
             <input type ="submit"class ="btn btn-outline-success" value ="agregar">
