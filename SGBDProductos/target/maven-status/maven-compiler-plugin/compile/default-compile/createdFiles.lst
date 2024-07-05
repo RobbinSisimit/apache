@@ -1,2 +1,1 @@
-org\robbinsisimit\webapp\SGBDProductos\JakartaRestConfiguration.class
-org\robbinsisimit\webapp\SGBDProductos\resources\JakartaEE10Resource.class
+org\robbinsisimit\webapp\servlet\ProductoServlet.class

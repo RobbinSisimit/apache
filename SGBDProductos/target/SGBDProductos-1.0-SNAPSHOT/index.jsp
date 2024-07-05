@@ -51,7 +51,7 @@
           <div class="carousel-item" data-bs-interval="2000">
             <img src="./assets/image/honor90.jpeg" class="d-block w-100" alt="2">
             <div class="carousel-caption d-none d-md-block">
-              <h5>HUAWEI</h5>
+              <h5>HUAWEI HONOR90</h5>
               <p>Cada vez mejorando .</p>
             </div>
           </div>
